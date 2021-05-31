@@ -23,7 +23,7 @@ const ContactsTab = (props) => {
         <Stack.Screen
           name="User Screen"
           component={User}
-          options={{ headerTitle: "Contact", headerTitleAlign: "center" }}
+          options={{ headerTitle: "Contact Details", headerTitleAlign: "center" }}
           />
       </Stack.Navigator>
   );

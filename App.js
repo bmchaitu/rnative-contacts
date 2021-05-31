@@ -3,7 +3,7 @@ import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import User from "./components/User";
+import MeTab from './screens/MeTab';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import ContactsTab from "./screens/ContactsTab";
 
@@ -38,7 +38,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Me"
-          component={User}
+          component={MeTab}
           options={{
             tabBarLabel: "Me",
             tabBarIcon: ({ size, color }) => (

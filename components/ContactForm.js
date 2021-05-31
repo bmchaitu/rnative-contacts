@@ -9,12 +9,15 @@ import {
 } from "react-native";
 import { Input, Image, Button } from "react-native-elements";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import list from "../assets/List";
 
 const ContactForm = (props) => {
-  const [firstName, setfirstName] = React.useState("");
-  const [lastName, setlastName] = React.useState("");
-  const [phone, setPhone] = React.useState("");
-  const [email, setEmail] = React.useState("");
+  if (props.route.params) var { user } = props.route.params;
+  else var user = { firstName: "", lastName: "", phone: "", email: "" };
+  const [firstName, setfirstName] = React.useState(user.firstName);
+  const [lastName, setlastName] = React.useState(user.lastName);
+  const [phone, setPhone] = React.useState(user.phone);
+  const [email, setEmail] = React.useState(user.email);
   const handleAdd = () => {
     if (firstName.length == 0)
       return Alert.alert("Error", "Please fill First Name");
@@ -31,8 +34,20 @@ const ContactForm = (props) => {
       email: email,
     };
 
-    props.route.params.list.push(contact);
+    if (props.route.params) {
+      list.forEach((contact) => {
+        if (contact.id === user.id) {
+          contact.firstName = firstName;
+          contact.lastName = lastName;
+          contact.email = email;
+          contact.phone = phone;
+        }
+        props.navigation.navigate("User");
+      });
+    } else {
+      list.push({ ...contact, id: list.length + 1 });
     props.navigation.navigate("Contacts");
+    }
   };
 
   return (

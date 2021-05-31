@@ -1,149 +1,88 @@
 const list = [
     {
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
+      firstName:'user1fname',
+      lastName:'userlname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:1
     },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
+      firstName:'user2fname',
+      lastName:'user2lname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:2
     },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
+      firstName:'user3fname',
+      lastName:'user3lname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:3
     },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
+      firstName:'user4fname',
+      lastName:'user4lname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:4
     },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
+      firstName:'user5fname',
+      lastName:'user5lname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:5
     },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
+      firstName:'user61fname',
+      lastName:'user6lname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:6
     },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
+      firstName:'user7fname',
+      lastName:'user7lname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:7
     },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
+      firstName:'user8fname',
+      lastName:'user8lname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:8
     },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
+      firstName:'user9fname',
+      lastName:'user9lname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:9
     },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
+      firstName:'user10fname',
+      lastName:'user10lname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:10
     },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
+      firstName:'user11fname',
+      lastName:'user11lname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:11
     },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
+      firstName:'user12fname',
+      lastName:'user12lname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:12
     },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
+      firstName:'user13fname',
+      lastName:'user13lname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:13
     },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
-    },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
-    },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
-    },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
-    },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
-    },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
-    },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
-    },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
-    },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
-    },{
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
-    },
-    {
-      name: "Chris Jackson",
-      avatar_url:
-        "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-      subtitle: "Vice Chairman",
-      phone:"+91123456789"
-    },
+      firstName:'user14fname',
+      lastName:'user14lname',
+      phone:'1234567890',
+      email:'abc@gmail.com',
+      id:14
+    }
   ];
 export default list;  

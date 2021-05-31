@@ -5,11 +5,11 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const ContactsList = (props) => {
   const renders = ({ item }) => (
-    <TouchableOpacity onPress={() => props.handleNavigation('User Screen')}>
+    <TouchableOpacity onPress={() => props.handleNavigation('User Screen',{user:item})}>
       <View style={styles.listitem}>
       <Image style={styles.image} source={require('../assets/dwayne-the-rock-.jpg')} ></Image>
       <View style={styles.info}>
-      <Text>{item.name}</Text>
+      <Text>{item.firstName}</Text>
       <Text>{item.phone}</Text>
       </View>
     </View>

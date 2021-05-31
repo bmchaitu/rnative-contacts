@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { Image, Button } from "react-native-elements";
 
-const User = (props) => {
+const Me = (props) => {
     var user;
   if (props.route.params) {
     var { user } = props.route.params;
@@ -10,12 +10,12 @@ const User = (props) => {
     user = {
       firstName: "Chaitanya",
       lastName: "B M",
-      phone: "1234567890",
+      phone: "+91 1234567890",
       email: "mailme@bmchaitu.tech",
     };
   }
   const handleUpdate = (user_object) => {
-    props.navigation.navigate('Add Contact',{user : user_object});
+    props.navigation.navigate('Update Me',{user : {...user_object, update:true}});
   }
   return (
     <View style={styles.screen}>
@@ -124,4 +124,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default User;
+export default Me;
