@@ -10,7 +10,7 @@ const Me = (props) => {
     user = {
       firstName: "Chaitanya",
       lastName: "B M",
-      phone: "+91 1234567890",
+      phone: "1234567890",
       email: "mailme@bmchaitu.tech",
     };
   }

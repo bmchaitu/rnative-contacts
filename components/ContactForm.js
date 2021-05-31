@@ -1,14 +1,11 @@
 import React from "react";
 import {
   View,
-  Text,
   StyleSheet,
-  TextInput,
   ScrollView,
   Alert,
 } from "react-native";
 import { Input, Image, Button } from "react-native-elements";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import list from "../assets/List";
 
 const ContactForm = (props) => {
