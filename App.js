@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import User from "./components/User";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import ContactsTab from "./screens/ContactsTab";
 
 const Tab = createBottomTabNavigator();
 const contacts = (props) => {
@@ -16,19 +17,11 @@ const contacts = (props) => {
   );
 };
 
-const user = (props) => {
-  return (
-    <View style={styles.screen}>
-      <User user="My user" />
-    </View>
-  );
-};
 
 export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        sceneContainerStyle={{ marginTop: 30, padding: 50 }}
         tabBarOptions={{
           activeTintColor: "black",
           inactiveTintColor: "gray",
@@ -41,11 +34,11 @@ export default function App() {
               <Ionicons name="ios-list" size={size} color={color} />
             ),
           }}
-          component={contacts}
+          component={ContactsTab}
         />
         <Tab.Screen
           name="Me"
-          component={user}
+          component={User}
           options={{
             tabBarLabel: "Me",
             tabBarIcon: ({ size, color }) => (
@@ -55,6 +48,7 @@ export default function App() {
         />
       </Tab.Navigator>
     </NavigationContainer>
+    
   );
 }
 

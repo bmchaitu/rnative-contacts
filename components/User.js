@@ -3,14 +3,19 @@ import {Text, View, StyleSheet} from 'react-native';
 
 const User = (props) => {
     return(
-        <View>
+        <View style={styles.screen}>
             <Text>
-                {props.user}
+                I am fucking
             </Text>
         </View>
     )
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    screen:{
+        marginTop:50,
+        paddingLeft:20
+    }
+});
 
 export default User;
