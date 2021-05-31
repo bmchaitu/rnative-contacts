@@ -4,14 +4,8 @@ import ContactsScreen from "./ContactsScreen";
 import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import ContactForm from '../components/ContactForm';
+import User from '../components/User';
 
-const AddConact = (props) => {
-  return (
-    <View>
-      <Text>Add the contact</Text>
-    </View>
-  );
-};
 const Stack = createStackNavigator();
 const ContactsTab = (props) => {
   return (
@@ -26,6 +20,11 @@ const ContactsTab = (props) => {
           component={ContactForm}
           options={{ headerTitle: "Contact", headerTitleAlign: "center" }}
         />
+        <Stack.Screen
+          name="User Screen"
+          component={User}
+          options={{ headerTitle: "Contact", headerTitleAlign: "center" }}
+          />
       </Stack.Navigator>
   );
 };

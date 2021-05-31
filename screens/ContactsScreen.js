@@ -5,6 +5,9 @@ import ContactsList from "../components/ContactsList";
 import list from "../assets/List";
 import Ionicons from 'react-native-vector-icons/Ionicons'
 const ContactsScreen = (props) => {
+  const handleNavigation = (route) => {
+    props.navigation.navigate(route);
+  }
   return (
     <View style={styles.screen}>
       <Button
@@ -13,8 +16,7 @@ const ContactsScreen = (props) => {
         title=" ADD CONTACT"
         onPress={() => props.navigation.navigate("Add Contact", { list })}
       />
-      <View></View>
-      <ContactsList />
+      <ContactsList handleNavigation={handleNavigation}/>
     </View>
   );
 };

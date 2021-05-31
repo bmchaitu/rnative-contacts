@@ -3,9 +3,9 @@ import React from "react";
 import list from "../assets/List";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const ContactsList = () => {
+const ContactsList = (props) => {
   const renders = ({ item }) => (
-    <TouchableOpacity onPress={() => console.log('clicked')}>
+    <TouchableOpacity onPress={() => props.handleNavigation('User Screen')}>
       <View style={styles.listitem}>
       <Image style={styles.image} source={require('../assets/dwayne-the-rock-.jpg')} ></Image>
       <View style={styles.info}>

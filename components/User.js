@@ -1,21 +1,135 @@
-import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import React from "react";
+import { Text, View, StyleSheet } from "react-native";
+import { Image, Button } from "react-native-elements";
 
 const User = (props) => {
-    return(
-        <View style={styles.screen}>
-            <Text>
-                I am fucking
+    let user;
+  if (props.route.params) {
+    const { user } = props.route.params.user;
+  } else {
+    user = {
+      firstName: "Chaitanya",
+      lastName: "B M",
+      phone: "+91 1234567890",
+      email: "mailme@bmchaitu.tech",
+    };
+  }
+  console.log(user)
+  return (
+    <View style={styles.screen}>
+      <View style={styles.container}>
+        <Image
+          source={require("../assets/dwayne-the-rock-.jpg")}
+          style={styles.image}
+        />
+        <Text
+          style={{
+            fontWeight: "bold",
+            borderBottomColor: "black",
+            textAlign: "center",
+            fontSize: 25,
+          }}
+        >
+          USER DETAILS
+        </Text>
+        <View style={styles.textContainer}>
+          <View style={styles.detailsContainer}>
+            <Text adjustsFontSizeToFit style={{ fontSize: 20, color: "gray" }}>
+              First Name
             </Text>
+          </View>
+          <View style={styles.detailsContainer}>
+            <Text adjustsFontSizeToFit style={{ fontSize: 23 }}>
+              {user.firstName}
+            </Text>
+          </View>
         </View>
-    )
+        <View style={styles.textContainer}>
+          <View style={styles.detailsContainer}>
+            <Text adjustsFontSizeToFit style={{ fontSize: 20, color: "gray" }}>
+              Last Name
+            </Text>
+          </View>
+          <View style={styles.detailsContainer}>
+            <Text adjustsFontSizeToFit style={{ fontSize: 18 }}>
+              {user.lastName}
+            </Text>
+          </View>
+        </View>
+        <View style={styles.textContainer}>
+          <View style={styles.detailsContainer}>
+            <Text adjustsFontSizeToFit style={{ fontSize: 20, color: "gray" }}>
+              Phone
+            </Text>
+          </View>
+          <View style={styles.detailsContainer}>
+            <Text adjustsFontSizeToFit style={{ fontSize: 18 }}>
+              {user.phone}
+            </Text>
+          </View>
+        </View>
+        <View style={styles.textContainer}>
+          <View style={styles.detailsContainer}>
+            <Text style={{ fontSize: 20, color: "gray" }}>Email-ID</Text>
+          </View>
+          <View style={styles.detailsContainer}>
+            <Text adjustsFontSizeToFit style={{ fontSize: 18 }}>
+              {user.email}
+            </Text>
+          </View>
+        </View>
+        <View style={{ flexDirection: "row" }}>
+          <Button
+            buttonStyle={{ margin: 50, backgroundColor: "#cdc733", width: 100 }}
+            title="Update"
+          />
+          <Button
+            buttonStyle={{ margin: 50, backgroundColor: "#fcacbc", width: 100 }}
+            title="Done"
+          />
+        </View>
+      </View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    screen:{
-        marginTop:50,
-        paddingLeft:20
-    }
+  screen: {
+    alignItems: "center",
+    marginTop: 50,
+    padding: 20,
+  },
+  container: {
+    backgroundColor: "#9fe6a0",
+    overflow: "hidden",
+    alignItems: "center",
+    elevation: 1,
+    paddingTop: 10,
+    width: 380,
+    height: 750,
+    borderRadius: 20,
+    borderColor: "#0a81ab",
+    borderWidth: 2,
+  },
+  image: {
+    width: 350,
+    height: 250,
+    marginBottom: 20,
+    borderRadius: 20,
+  },
+  textContainer: {
+    width: 350,
+    margin: 5,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
+  detailsContainer: {
+    width: 150,
+    height: 50,
+    justifyContent: "center",
+    alignItems: "flex-start",
+    overflow: "hidden",
+  },
 });
 
 export default User;
