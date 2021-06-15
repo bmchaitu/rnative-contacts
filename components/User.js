@@ -3,25 +3,24 @@ import { Text, View, StyleSheet } from "react-native";
 import { Image, Button } from "react-native-elements";
 
 const User = (props) => {
-    var user;
+  var user;
   if (props.route.params) {
     var { user } = props.route.params;
   } else {
     user = {
       firstName: "Chaitanya",
       lastName: "B M",
-      phone: "1234567890",
+      phone: "1234567990",
       email: "mailme@bmchaitu.tech",
     };
-  }
-  const handleUpdate = (user_object) => {
-    props.navigation.navigate('Add Contact',{user : user_object});
   }
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
         <Image
-          source={require("../assets/dwayne-the-rock-.jpg")}
+          source={{
+            uri: user.image ? user.image : "../assets/dwayne-the-rock-.jpg",
+          }}
           style={styles.image}
         />
         <View style={styles.textContainer}>
@@ -72,11 +71,6 @@ const User = (props) => {
         </View>
         <View style={{ flexDirection: "row" }}>
           <Button
-            buttonStyle={{ margin: 50, backgroundColor: "#cdc733", width: 100 }}
-            title="Update"
-            onPress={() => handleUpdate(user)}
-          />
-          <Button
             buttonStyle={{ margin: 50, backgroundColor: "#fcacbc", width: 100 }}
             title="Done"
           />
@@ -89,7 +83,7 @@ const User = (props) => {
 const styles = StyleSheet.create({
   screen: {
     alignItems: "center",
-    marginTop:10
+    marginTop: 10,
   },
   container: {
     backgroundColor: "#9fe6a0",

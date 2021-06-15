@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Me from '../components/Me';
-import ContactForm from "../components/ContactForm";
+import Me from "../components/Me";
+import UpdateMe from "../components/UpdateMe";
 
 const Stack = createStackNavigator();
 const MeTab = (props) => {
@@ -12,9 +12,7 @@ const MeTab = (props) => {
         component={Me}
         options={{ headerTitle: "My Details", headerTitleAlign: "center" }}
       />
-      <Stack.Screen
-      name="Update Me"
-      component={ContactForm}/>
+      <Stack.Screen name="Update Me" component={UpdateMe} />
     </Stack.Navigator>
   );
 };

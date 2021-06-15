@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { Button } from "react-native-elements";
 import ContactsList from "../components/ContactsList";
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import Ionicons from "react-native-vector-icons/Ionicons";
+
 const ContactsScreen = (props) => {
   const handleNavigation = (route, params) => {
     props.navigation.navigate(route, params);
-  }
+  };
+
   return (
     <View style={styles.screen}>
       <Button
@@ -15,7 +17,7 @@ const ContactsScreen = (props) => {
         title=" ADD CONTACT"
         onPress={() => props.navigation.navigate("Add Contact")}
       />
-      <ContactsList handleNavigation={handleNavigation}/>
+      <ContactsList handleNavigation={handleNavigation} />
     </View>
   );
 };

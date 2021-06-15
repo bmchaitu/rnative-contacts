@@ -1,26 +1,36 @@
-import { View, FlatList, StyleSheet,Text, Image } from "react-native";
+import { View, FlatList, StyleSheet, Text, Image, Button } from "react-native";
 import React from "react";
-import list from "../assets/List";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import appContext from "../context/appContext";
+
+import ListItem from "./ListItem";
+import RightAction from "./RightAction";
+import LeftAction from "./LeftAction";
 
 const ContactsList = (props) => {
-  const renders = ({ item }) => (
-    <TouchableOpacity onPress={() => props.handleNavigation('User Screen',{user:item})}>
-      <View style={styles.listitem}>
-      <Image style={styles.image} source={require('../assets/dwayne-the-rock-.jpg')} ></Image>
-      <View style={styles.info}>
-      <Text>{item.firstName}</Text>
-      <Text>{item.phone}</Text>
-      </View>
-    </View>
-    </TouchableOpacity>
-  );
+  const AppContext = React.useContext(appContext);
+  const contactslist = AppContext.contacts;
+  const setContactslist = AppContext.addUser;
+
+  const leftNavigate = (id) => props.handleNavigation("Add Contact");
   return (
     <View style={styles.contactsscreen}>
       <FlatList
         keyExtractor={(item, index) => index.toString()}
-        data={list}
-        renderItem={renders}
+        data={contactslist}
+        renderItem={({ item }) => (
+          <ListItem
+            email={item.email}
+            phone={item.phone}
+            title={item.firstName}
+            leftNavigate={leftNavigate}
+            image={item.imageUri}
+            lastName={item.lastName}
+            subTitle={item.phone}
+            renderRightActions={RightAction}
+            id={item.id}
+            renderLeftActions={LeftAction}
+          />
+        )}
       />
     </View>
   );
@@ -34,21 +44,21 @@ const styles = StyleSheet.create({
     marginBottom: 60,
   },
   listitem: {
-    padding:5,
+    padding: 5,
     height: 80,
-    flexDirection:'row',
-    borderColor:'black',
-    borderBottomWidth:1
+    flexDirection: "row",
+    borderColor: "black",
+    borderBottomWidth: 1,
   },
-  image:{
-    height:70,
-    width:70,
-    borderRadius:35
+  image: {
+    height: 70,
+    width: 70,
+    borderRadius: 35,
   },
-  info:{
-    justifyContent:'center',
-    alignItems:'center',
-    paddingLeft:50,
-  }
+  info: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingLeft: 50,
+  },
 });
 export default ContactsList;

@@ -1,20 +1,17 @@
-import React from "react";
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  Alert,
-} from "react-native";
+import React, { useEffect } from "react";
+import { View, StyleSheet, ScrollView, Alert } from "react-native";
 import { Input, Image, Button } from "react-native-elements";
-import list from "../assets/List";
+import appContext from "../context/appContext";
 
 const ContactForm = (props) => {
+  const AppContext = React.useContext(appContext);
   if (props.route.params) var { user } = props.route.params;
   else var user = { firstName: "", lastName: "", phone: "", email: "" };
   const [firstName, setfirstName] = React.useState(user.firstName);
   const [lastName, setlastName] = React.useState(user.lastName);
   const [phone, setPhone] = React.useState(user.phone);
   const [email, setEmail] = React.useState(user.email);
+
   const handleAdd = () => {
     if (firstName.length == 0)
       return Alert.alert("Error", "Please fill First Name");
@@ -24,7 +21,6 @@ const ContactForm = (props) => {
       return Alert.alert("Error", "Please fill Contact Properly");
     if (email.length == 0) return Alert.alert("Error", "Please Fill Email ID");
     const contact = {
-      name: firstName + lastName,
       firstName,
       lastName,
       phone: phone,
@@ -32,18 +28,11 @@ const ContactForm = (props) => {
     };
 
     if (props.route.params) {
-      list.forEach((contact) => {
-        if (contact.id === user.id) {
-          contact.firstName = firstName;
-          contact.lastName = lastName;
-          contact.email = email;
-          contact.phone = phone;
-        }
-        props.navigation.navigate("User");
-      });
+      AppContext.editUser(contact, props.route.params.id);
+      props.navigation.navigate("Contacts");
     } else {
-      list.push({ ...contact, id: list.length + 1 });
-    props.navigation.navigate("Contacts");
+      AppContext.addUser(contact);
+      props.navigation.navigate("Contacts");
     }
   };
 
