@@ -1,3 +1,4 @@
+import list from "../assets/List.js";
 export default (state, action) => {
   switch (action.type) {
     case "ADD_CONTACT":
@@ -5,7 +6,12 @@ export default (state, action) => {
         ...state,
         contacts: [...state.contacts].concat(action.payload.contact),
       };
-
+    case "REMOVE_USER":
+      return {
+        token: null,
+        user: "",
+        contacts: null,
+      };
     case "EDIT_CONTACT":
       const newcontacts = state.contacts.filter(
         (c) => c.id !== action.payload.id
@@ -16,6 +22,7 @@ export default (state, action) => {
         lastName: action.payload.contact.lastName,
         email: action.payload.contact.email,
         phone: action.payload.contact.phone,
+        imageUri: action.payload.contact.imageUri,
       };
       return {
         ...state,
@@ -24,6 +31,7 @@ export default (state, action) => {
     case "SET_USER":
       return {
         ...state,
+        contacts: list,
         email: action.payload.email,
         token: action.payload.token,
       };
@@ -35,6 +43,7 @@ export default (state, action) => {
         ...state,
         contacts: editedcontacts,
       };
+
     default:
       return {
         ...state,

@@ -18,6 +18,11 @@ const Me = (props) => {
       user: { ...user_object, update: true, setUser },
     });
   };
+
+  const handleLogOut = async () => {
+    await AppContext.removeUser();
+    props.navigation.replace("LogIn");
+  };
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
@@ -73,7 +78,7 @@ const Me = (props) => {
             </Text>
           </View>
         </View>
-        {/* <View style={{ flexDirection: "row" }}>
+        <View style={{ flexDirection: "row" }}>
           <Button
             buttonStyle={{ margin: 50, backgroundColor: "#cdc733", width: 100 }}
             title="Update"
@@ -81,9 +86,10 @@ const Me = (props) => {
           />
           <Button
             buttonStyle={{ margin: 50, backgroundColor: "#fcacbc", width: 100 }}
-            title="Done"
+            title="Log Out"
+            onPress={handleLogOut}
           />
-        </View> */}
+        </View>
       </View>
     </View>
   );

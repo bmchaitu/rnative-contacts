@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import AppContext from "./appContext";
 import appReducer from "./appReducer";
-import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import list from "../assets/List.js";
 export default (props) => {
   const intialState = {
@@ -40,12 +40,25 @@ export default (props) => {
     });
   };
 
-  const setUser = ({ email, token }) => {
+  const setUser = async ({ email, token }) => {
+    try {
+      await AsyncStorage.setItem("userData", JSON.stringify({ email, token }));
+      dispatch({
+        type: "SET_USER",
+        payload: { email, token },
+      });
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  };
+
+  const removeUser = async () => {
+    await AsyncStorage.removeItem("userData");
     dispatch({
-      type: "SET_USER",
-      payload: { email, token },
+      type: "REMOVE_USER",
     });
   };
+
   const { email, token, contacts } = state;
   return (
     <AppContext.Provider
@@ -57,6 +70,7 @@ export default (props) => {
         deleteUser,
         editUser,
         setUser,
+        removeUser,
       }}
     >
       {props.children}

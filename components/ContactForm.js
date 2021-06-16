@@ -2,15 +2,26 @@ import React, { useEffect } from "react";
 import { View, StyleSheet, ScrollView, Alert } from "react-native";
 import { Input, Image, Button } from "react-native-elements";
 import appContext from "../context/appContext";
+import ImageComponent from "./ImageComponent";
+import * as File from "expo-file-system";
 
 const ContactForm = (props) => {
   const AppContext = React.useContext(appContext);
   if (props.route.params) var { user } = props.route.params;
-  else var user = { firstName: "", lastName: "", phone: "", email: "" };
+  else
+    var user = {
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: "",
+      imageUri: false,
+    };
   const [firstName, setfirstName] = React.useState(user.firstName);
   const [lastName, setlastName] = React.useState(user.lastName);
   const [phone, setPhone] = React.useState(user.phone);
   const [email, setEmail] = React.useState(user.email);
+  const [imageUri, setImageuri] = React.useState(user.imageUri);
+  const [move, setMove] = React.useState("");
 
   const handleAdd = () => {
     if (firstName.length == 0)
@@ -27,6 +38,25 @@ const ContactForm = (props) => {
       email: email,
     };
 
+    var newPath = "";
+    if (move) {
+      newPath = File.documentDirectory + imageUri.split("/").pop();
+      File.moveAsync({
+        from: imageUri,
+        to: newPath,
+      })
+        .then((mes) => console.log("Success"))
+        .catch((err) => console.log(err));
+    } else {
+      newPath = File.documentDirectory + imageUri.split("/").pop();
+      File.copyAsync({
+        from: imageUri,
+        to: newPath,
+      })
+        .then((mes) => console.log("Success"))
+        .catch((err) => console.log(err));
+    }
+    contact.imageUri = newPath;
     if (props.route.params) {
       AppContext.editUser(contact, props.route.params.id);
       props.navigation.navigate("Contacts");
@@ -36,13 +66,30 @@ const ContactForm = (props) => {
     }
   };
 
+  const getUri = (uri) => {
+    setImageuri(uri);
+    setMove(true);
+  };
+
+  const copyUri = (uri) => {
+    setImageuri(uri);
+    setMove(false);
+  };
   return (
     <ScrollView>
       <View style={styles.screen}>
-        <Image
-          source={require("../assets/dwayne-the-rock-.jpg")}
-          style={styles.image}
-        />
+        {user.image ? (
+          <ImageComponent
+            getUri={getUri}
+            copyUri={copyUri}
+            imageUri={imageUri}
+          />
+        ) : imageUri ? (
+          <Image style={styles.image} source={{ uri: imageUri }} />
+        ) : (
+          <ImageComponent getUri={getUri} copyUri={copyUri} />
+        )}
+
         <Input
           labelStyle={styles.label}
           label="First Name"
@@ -73,7 +120,7 @@ const ContactForm = (props) => {
           onChangeText={(text) => setEmail(text)}
         />
         <Button
-          buttonStyle={{ backgroundColor: "#fcacbc", width: 100 }}
+          buttonStyle={{ backgroundColor: "dodgerblue", width: 100 }}
           title="Done"
           onPress={handleAdd}
         />
@@ -97,9 +144,9 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   image: {
-    borderRadius: 50,
-    width: 100,
-    height: 100,
+    borderRadius: 70,
+    width: 140,
+    height: 140,
     marginBottom: 20,
   },
   label: { color: "black" },

@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import appContext from "../context/appContext";
+
 import styles from "./Style";
 import {
   Keyboard,
@@ -39,7 +40,10 @@ const LoginScreen = (props) => {
       );
       if (response.ok) {
         const resData = await response.json();
-        AppContext.setUser({ email: resData.email, token: resData.idToken });
+        await AppContext.setUser({
+          email: resData.email,
+          token: resData.idToken,
+        });
         props.navigation.replace("TabScreen");
       } else {
         const resData = await response.json();
