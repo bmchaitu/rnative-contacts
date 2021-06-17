@@ -9,6 +9,10 @@ const ContactsScreen = (props) => {
   const handleNavigation = (route, params) => {
     props.navigation.navigate(route, params);
   };
+
+  React.useEffect(() => {
+    AppContext.loadContacts();
+  }, []);
   return (
     <View style={styles.screen}>
       <Button
