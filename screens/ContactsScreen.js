@@ -3,12 +3,12 @@ import { View, StyleSheet, Text } from "react-native";
 import { Button } from "react-native-elements";
 import ContactsList from "../components/ContactsList";
 import Ionicons from "react-native-vector-icons/Ionicons";
-
+import appContext from "../context/appContext";
 const ContactsScreen = (props) => {
+  const AppContext = React.useContext(appContext);
   const handleNavigation = (route, params) => {
     props.navigation.navigate(route, params);
   };
-
   return (
     <View style={styles.screen}>
       <Button

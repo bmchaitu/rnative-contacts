@@ -11,8 +11,10 @@ import {
 } from "react-native";
 import { Button } from "react-native-elements";
 import AppTextInput from "../components/AppTextInput";
+import appContext from "../context/appContext";
 
 const SignUp = (props) => {
+  var AppContext = React.useContext(appContext);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const handleSubmit = async () => {
@@ -37,13 +39,15 @@ const SignUp = (props) => {
         }
       );
       if (response.ok) {
+        const { email, idToken } = await response.json();
+        AppContext.signupUser({ email, token: idToken });
         props.navigation.replace("TabScreen");
       } else {
         const resData = await response.json();
         Alert.alert("Error", resData.error.message);
       }
     } catch (err) {
-      Alert.alert("Error", "Something is wrong");
+      Alert.alert("Error", err.message);
     }
   };
   return (

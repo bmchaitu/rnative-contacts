@@ -1,6 +1,6 @@
 import React, { Component, useEffect } from "react";
 import appContext from "../context/appContext";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import styles from "./Style";
 import {
   Keyboard,
@@ -17,6 +17,23 @@ const LoginScreen = (props) => {
   const AppContext = React.useContext(appContext);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  useEffect(() => {
+    const checkuser = async () => {
+      try {
+        const res = await AsyncStorage.getItem("userData");
+        if (res) {
+          let { email, token, firstName, lastName, phone, profileImage } =
+            JSON.parse(res);
+          AppContext.signupUser({ email, token });
+          props.navigation.replace("TabScreen");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    checkuser();
+  }, [props]);
+
   const onLoginPress = async () => {
     if (email.trim().length == 0 || password.trim().length == 0)
       return Alert.alert("Error", "PLease fill alll details");
@@ -40,10 +57,11 @@ const LoginScreen = (props) => {
       );
       if (response.ok) {
         const resData = await response.json();
-        await AppContext.setUser({
-          email: resData.email,
-          token: resData.idToken,
-        });
+        AppContext.signupUser({ email: resData.email, token: resData.idToken });
+        await AsyncStorage.setItem(
+          "userData",
+          JSON.stringify({ email: resData.email, token: resData.idToken })
+        );
         props.navigation.replace("TabScreen");
       } else {
         const resData = await response.json();

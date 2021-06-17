@@ -19,8 +19,8 @@ const User = (props) => {
       <View style={styles.container}>
         <Image
           source={
-            user.image
-              ? { uri: user.image }
+            user.imageUri
+              ? { uri: user.imageUri }
               : require("../assets/dwayne-the-rock-.jpg")
           }
           style={styles.image}

@@ -9,9 +9,8 @@ import ContactsTab from "./screens/ContactsTab";
 import AppProvider from "./context/AppState";
 import LoginScreen from "./components/LogIn";
 import SignUp from "./components/SignUp";
-import WelcomeScreen from "./screens/Welcome";
+
 import { createStackNavigator } from "@react-navigation/stack";
-import { init } from "./helpers/db";
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => {
@@ -51,7 +50,6 @@ export default function App() {
     <AppProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="LogIn" component={LoginScreen} />
           <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen

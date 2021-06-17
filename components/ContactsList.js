@@ -9,8 +9,6 @@ import LeftAction from "./LeftAction";
 const ContactsList = (props) => {
   const AppContext = React.useContext(appContext);
   const contactslist = AppContext.contacts;
-  const setContactslist = AppContext.addUser;
-
   const leftNavigate = (id) => props.handleNavigation("Add Contact");
   return (
     <View style={styles.contactsscreen}>
@@ -21,11 +19,10 @@ const ContactsList = (props) => {
           <ListItem
             email={item.email}
             phone={item.phone}
-            title={item.firstName}
+            firstName={item.firstName}
             leftNavigate={leftNavigate}
-            image={item.imageUri}
+            imageUri={item.imageUri}
             lastName={item.lastName}
-            subTitle={item.phone}
             renderRightActions={RightAction}
             id={item.id}
             renderLeftActions={LeftAction}

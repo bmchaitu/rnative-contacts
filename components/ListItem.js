@@ -13,11 +13,10 @@ import appContext from "../context/appContext";
 function ListItem({
   email,
   phone,
-  title,
-  subTitle,
+  firstName,
   lastName,
   id,
-  image,
+  imageUri,
   IconComponent,
   renderRightActions,
   renderLeftActions,
@@ -31,13 +30,13 @@ function ListItem({
   const handleleftAction = () => {
     navigation.navigate("Add Contact", {
       user: {
-        firstName: title,
-        lastName: subTitle,
+        firstName,
+        lastName,
         phone,
         email,
-        image,
+        imageUri,
+        id,
       },
-      id,
     });
   };
   return (
@@ -52,21 +51,23 @@ function ListItem({
         onPress={() =>
           navigation.navigate("User Screen", {
             user: {
-              firstName: title,
-              lastName: lastName,
-              phone: phone,
-              email: email,
-              image,
+              firstName,
+              lastName,
+              phone,
+              email,
+              imageUri,
             },
           })
         }
       >
         <View style={styles.container}>
           {IconComponent}
-          {image && <Image style={styles.image} source={{ uri: image }} />}
+          {imageUri && (
+            <Image style={styles.image} source={{ uri: imageUri }} />
+          )}
           <View style={styles.detailsContainer}>
-            <AppText style={styles.title}>{title}</AppText>
-            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+            <AppText style={styles.title}>{firstName}</AppText>
+            <AppText style={styles.subTitle}>{phone}</AppText>
           </View>
         </View>
       </TouchableHighlight>

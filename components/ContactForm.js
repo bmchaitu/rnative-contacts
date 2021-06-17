@@ -31,38 +31,45 @@ const ContactForm = (props) => {
     if (phone.length == 0 || phone.length < 10 || phone.length > 10)
       return Alert.alert("Error", "Please fill Contact Properly");
     if (email.length == 0) return Alert.alert("Error", "Please Fill Email ID");
+
+    if (!imageUri) return Alert.alert("Error", "Please take/select a picture");
     const contact = {
       firstName,
       lastName,
       phone: phone,
       email: email,
+      ownerEmail: AppContext.email,
     };
 
     var newPath = "";
-    if (move) {
-      newPath = File.documentDirectory + imageUri.split("/").pop();
-      File.moveAsync({
-        from: imageUri,
-        to: newPath,
-      })
-        .then((mes) => console.log("Success"))
-        .catch((err) => console.log(err));
-    } else {
-      newPath = File.documentDirectory + imageUri.split("/").pop();
-      File.copyAsync({
-        from: imageUri,
-        to: newPath,
-      })
-        .then((mes) => console.log("Success"))
-        .catch((err) => console.log(err));
-    }
-    contact.imageUri = newPath;
+    if (user.imageUri !== imageUri) {
+      if (move) {
+        newPath = File.documentDirectory + imageUri.split("/").pop();
+        File.moveAsync({
+          from: imageUri,
+          to: newPath,
+        })
+          .then((mes) => {})
+          .catch((err) => console.log(err));
+      } else {
+        newPath = File.documentDirectory + imageUri.split("/").pop();
+        File.copyAsync({
+          from: imageUri,
+          to: newPath,
+        })
+          .then((mes) => {})
+          .catch((err) => console.log(err));
+      }
+      contact.imageUri = newPath;
+    } else contact.imageUri = user.imageUri;
+
     if (props.route.params) {
-      AppContext.editUser(contact, props.route.params.id);
+      AppContext.editUser(contact, user.id);
       props.navigation.navigate("Contacts");
     } else {
-      AppContext.addUser(contact);
-      props.navigation.navigate("Contacts");
+      AppContext.addUser(contact).then(() =>
+        props.navigation.navigate("Contacts")
+      );
     }
   };
 
@@ -78,14 +85,12 @@ const ContactForm = (props) => {
   return (
     <ScrollView>
       <View style={styles.screen}>
-        {user.image ? (
+        {imageUri ? (
           <ImageComponent
             getUri={getUri}
             copyUri={copyUri}
             imageUri={imageUri}
           />
-        ) : imageUri ? (
-          <Image style={styles.image} source={{ uri: imageUri }} />
         ) : (
           <ImageComponent getUri={getUri} copyUri={copyUri} />
         )}

@@ -2,7 +2,6 @@ import React from "react";
 import { TouchableWithoutFeedback } from "react-native";
 import { View, StyleSheet, Modal, Image } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Button } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
 function ImageComponent(props) {
