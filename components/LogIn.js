@@ -102,7 +102,7 @@ const LoginScreen = (props) => {
                 backgroundColor: "brown",
               }}
               title="Signup to Register Account"
-              onPress={() => props.navigation.navigate("SignUp")}
+              onPress={() => props.navigation.replace("SignUp")}
             />
           </View>
         </View>

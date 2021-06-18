@@ -77,7 +77,7 @@ const SignUp = (props) => {
             <Button
               buttonStyle={{ marginTop: 20 }}
               title="Move To LoginScreen"
-              onPress={() => props.navigation.navigate("LogIn")}
+              onPress={() => props.navigation.replace("LogIn")}
             />
           </View>
         </View>
